@@ -47,5 +47,5 @@ jobs:
       - name: Docker build
         run: |
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PWD }}
-          docker build growth123/test .
+          docker build -t growth123/test .
           docker push growth123/test
