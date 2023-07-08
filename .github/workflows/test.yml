@@ -49,3 +49,13 @@ jobs:
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PWD }}
           docker build -t growth123/test .
           docker push growth123/test
+      - name: Deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PRIVATE_KEY }}
+          script: |
+            docker pull growth123/test
+            docker stop server
+            docker run -d --rm --name server -p 8080:8080 growth123/test
