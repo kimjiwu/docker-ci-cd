@@ -1,2 +1,4 @@
-package com.example.dockercicd;public class HelloController {
+package com.example.dockercicd;
+
+public class HelloController {
 }
